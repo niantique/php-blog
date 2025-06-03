@@ -20,4 +20,9 @@ class Brand {
         $this->description = $description;
         $this->id = $id;
     }
+
+       public function getName(): string {
+        return $this->name;
+    }
 }
+

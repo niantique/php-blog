@@ -32,10 +32,10 @@ class Header
             </header>
 
             <form action="/search" method="get">
-                <in>Search:
+                <label>Search
                     <input type="text" name="keyword">
                     </label>
-                    <button>Go</button>
+                    <button>&#10148;</button>
             </form>
 
     <?php

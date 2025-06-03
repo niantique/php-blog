@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Core\BaseController;
-use APP\Repository\CarRepository;
+use App\Repository\CarRepository;
 use App\View\ErrorView;
 use App\View\HomeView;
 

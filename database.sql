@@ -47,12 +47,12 @@ INSERT INTO brand(name,origin,description) VALUES
 ("Nissan", "Japanese", "Nissan is a Japanese automobile manufacturer known for its innovative technology and reliable vehicles. Founded in 1933, the brand offers a wide range of cars, from compact models to electric vehicles like the Nissan LEAF. Nissan is recognized for blending performance, efficiency, and modern design.");
 
 INSERT INTO car(model, year, image, brand_id) VALUES
-("500 Superfast GRAN TURISMO", 1964, 'assets/car/ferrari_500_superfast.jpg', 1),
-("Huracan", 2016, 'assets/car/lamborghini_huracan.jpg', 2),
-("Aventador", 2015, 'assets/car/lamborghini_aventador.jpg', 2),
-("Revuelto", 2023, 'assets/car/lamborghini_revuelto.jpg', 2),
-("Siàn FKP 37", 2019, 'assets/car/lamborghini_sian_fkp.jpg', 2),
-("240Z", 1973, 'assets/car/nissan_dastun.jpg', 4);
+("500 Superfast GRAN TURISMO", 1964, '/assets/car/ferrari_500_superfast.jpg', 1),
+("Huracan", 2016, '/assets/car/lamborghini_huracan.jpg', 2),
+("Aventador", 2015, '/assets/car/lamborghini_aventador.jpg', 2),
+("Revuelto", 2023, '/assets/car/lamborghini_revuelto.jpg', 2),
+("Siàn FKP 37", 2019, '/assets/car/lamborghini_sian_fkp.jpg', 2),
+("240Z", 1973, '/assets/car/nissan_dastun.jpg', 4);
 
 INSERT INTO article (author,text, car_id) VALUES 
 ("Niantique", "The Nissan 240Z, introduced in 1969 by Nissan under the Datsun brand in the United States, is one of the most iconic Japanese sports cars ever built. Known for its sleek styling, impressive performance, and affordable price, the 240Z helped redefine what a sports car could be, especially in the American market. At the heart of the 240Z was a 2.4-liter inline-six engine (hence the “240” in its name) that produced around 151 horsepower. Paired with a 4-speed manual transmission, the car could accelerate from 0 to 60 mph in just over 8 seconds—an impressive feat for the time. Its independent suspension and lightweight design gave it agile handling and a smooth, enjoyable ride. The 240Z combined performance with reliability, a rare combination in sports cars of that era. It was also praised for its European-inspired design, drawing comparisons to far more expensive models like the Jaguar E-Type.
