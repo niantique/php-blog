@@ -6,19 +6,35 @@ use App\Entity\Article;
 use App\Entity\Car;
 use App\Entity\Brand;
 
-class ArticleRepository {
-    public function getAll(): array {
+class ArticleRepository
+{
+    public function getAll(): array
+    {
         $list = [];
         $connection = Database::connect();
 
         $preparedQuery = $connection->prepare("
             SELECT 
-                a.id AS article_id, a.author, a.text, a.image AS article_image, a.date,
-                c.id AS car_id, c.model, c.year, c.image AS car_image, c.brand_id,
-                b.id AS brand_id, b.name AS brand_name, b.origin, b.description
-            FROM article a
-            JOIN car c ON a.car_id = c.id
-            JOIN brand b ON c.brand_id = b.id
+    article.id AS article_id,
+    article.author,
+    article.text,
+    article.image AS article_image,
+    article.date,
+
+    car.id AS car_id,
+    car.model,
+    car.year,
+    car.image AS car_image,
+    car.brand_id,
+
+    brand.id AS brand_id,
+    brand.name AS brand_name,
+    brand.origin,
+    brand.description
+
+FROM article
+JOIN car ON article.car_id = car.id
+JOIN brand ON car.brand_id = brand.id;
         ");
         $preparedQuery->execute();
 
@@ -49,5 +65,41 @@ class ArticleRepository {
             $list[] = $article;
         }
         return $list;
+    }
+
+    public function getById(int $id): ?Article
+    {
+        $connection = Database::connect();
+
+        $preparedQuery = $connection->prepare("
+          SELECT 
+    article.id AS article_id,
+    article.author,
+    article.text,
+    article.image AS article_image,
+    article.date,
+
+    car.id AS car_id,
+    car.model,
+    car.year,
+    car.image AS car_image,
+    car.brand_id,
+
+    brand.id AS brand_id,
+    brand.name AS brand_name,
+    brand.origin,
+    brand.description
+
+FROM article
+JOIN car ON article.car_id = car.id
+JOIN brand ON car.brand_id = brand.id
+WHERE article.id = :id;");
+        $preparedQuery->execute(['id' => $id]);
+        $line = $preparedQuery->fetch();
+        if (!$line) return null;
+
+        $brand = new Brand($line['brand_name'], $line['origin'], $line['description'], $line['brand_id']);
+        $car = new Car($line['model'], $line['year'], $line['car_image'], $brand, $line['car_id']);
+        return new Article($line['author'], $line['text'], $car, $line['article_image'], new \DateTime($line['date']), $line['article_id']);
     }
 }

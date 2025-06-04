@@ -3,8 +3,6 @@
 namespace App\View;
 
 use App\Core\BaseView;
-use App\View\Part\Header;
-use App\View\Part\Footer;
 
 class HomeView extends BaseView
 {
