@@ -40,10 +40,6 @@ class FormArticleView extends FormView
             <label>Text<br>
                 <textarea name="text"><?= htmlspecialchars($this->article?->getText() ?? "") ?></textarea>
             </label><br>
-            <!-- <label>Image<br>
-                <input type="file" name="image" accept="image/*">
-            </label><br> -->
-            
             <button type="submit"><?= $this->article ? "Update" : "Publish" ?></button>
         </form>
         </div>

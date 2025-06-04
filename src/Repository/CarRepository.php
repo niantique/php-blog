@@ -66,4 +66,17 @@ class CarRepository
         }
         return $list;
     }
+
+    public function persist(Car $car): void {
+        $connection = Database::connect();
+        $preparedQuery = $connection->prepare("INSERT INTO car (model, year, image, brand_id) VALUES (:model, :year, :image, :brand_id)");
+        $preparedQuery->execute([
+            ':model' => $car->getModel(),
+            ':year' => $car->getYear(),
+            ':image' => $car->getImage(),
+            ':brand_id' => $car->getBrand()->getId(),
+        ]);
+        $lastInsertId = $connection->lastInsertId();
+        $car->setId((int)$lastInsertId);
+    }
 }

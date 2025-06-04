@@ -32,5 +32,13 @@ class Brand {
     public function getDescription(): string {
         return $this->description;
     }
+
+    public function getId(): ?int {
+        return $this->id;
+    }
+
+    public function setId(int $id):void {
+        $this->id=$id;
+    }
 }
 

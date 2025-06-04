@@ -113,5 +113,23 @@ WHERE article.id = :id;");
         ':image' => $article->getImage(),
         ':date' => $article->getDate()->format('Y-m-d H:i:s')
         ]);
+        $lastInsertId = $connection->lastInsertId();
+        $article->setId((int)$lastInsertId);
+    }
+
+    public function update(Article $article): void {
+        $connection = Database::connect();
+        $preparedQuery = $connection->prepare("
+          UPDATE article 
+        SET author = :author, text = :text, image = :image 
+        WHERE id = :id
+        ");
+        $preparedQuery->execute([
+             ':author' => $article->getAuthor(),
+        ':text' => $article->getText(),
+        ':image' => $article->getImage(),
+        ':id' => $article->getId()
+        ]);
+
     }
 }
