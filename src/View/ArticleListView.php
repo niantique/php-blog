@@ -15,9 +15,9 @@ class ArticleListView extends BaseView
     }
 
     protected function content(): void
-    {
+    {   
+        echo "<h4>OUR CAR ARTICLES</h4>";
         echo '<div class="articlesMain">';
-        // echo "<h1>OUR CAR ARTICLES</h1>";
         foreach (array_slice($this->articles, 0, 3) as $article) {
             $car = $article->getCar();
             $brand = $car->getBrand();
@@ -29,6 +29,10 @@ class ArticleListView extends BaseView
             echo "<p>Author: {$article->getAuthor()}</p>";
             echo "</div>";
         }
+        echo "</div>";
+        echo '<div class="manage">';
+        echo"<a href='/add-article'>Write a review</a>";
+        echo "<h4>Manage your review</h4>";
         echo "</div>";
     }
 }

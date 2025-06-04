@@ -1,0 +1,119 @@
+:root {
+  --font-main: "Boldonse", system-ui;
+  --font-family1: "Lekton", monospace;
+  --font-family2: "Krona One", sans-serif;
+  --color-main: rgba(200, 104, 0);
+}
+
+.boldonse-regular {
+  font-family: "Boldonse", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.lekton-regular {
+  font-family: "Lekton", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.lekton-bold {
+  font-family: "Lekton", monospace;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.lekton-regular-italic {
+  font-family: "Lekton", monospace;
+  font-weight: 400;
+  font-style: italic;
+}
+.krona-one-regular {
+  font-family: "Krona One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-main1);
+  color: var(--color-main);
+  text-transform: uppercase;
+}
+
+section {
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)),
+    url("https://images.unsplash.com/photo-1519440862171-af26cf8c2a85?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-position: bottom;
+  background-size: cover;
+  height: 150vh;
+  h1 {
+    font-family: var(--font-family2);
+    font-size: 9em;
+    text-align: center;
+    opacity: 55%;
+  }
+  div {
+    width: 75vw;
+    height: 130vh;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: black;
+    opacity: 80%;
+    border-radius: 20px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--color-main);
+    filter: brightness(70%);
+    h2 {
+      text-align: center;
+      font-family: var(--font-family1);
+      font-size: 5em;
+      font-weight: 100;
+    }
+    form {
+      margin-left: 10vw;
+      margin-right: 10vw;
+      label {
+        font-family: var(--font-family1);
+      }
+      input {
+        width: 100%;
+        height: 8vh;
+        border-radius: 10px;
+        border-style: solid;
+        border-width: 1px;
+        border-color: var(--color-main);
+        background-color: black;
+      }
+      textarea {
+        width: 100%;
+        height: 25vh;
+        border-radius: 10px;
+        border-style: solid;
+        border-width: 1px;
+        border-color: var(--color-main);
+        background-color: black;
+      }
+      button {
+        border: none;
+        background-color: black;
+        font-family: var(--font-family2);
+        padding: 10px 25px 10px 25px;
+        font-size: 2em;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+        padding-top: 5vh;
+      }
+    }
+  }
+}
+footer {
+  text-align: center;
+  font-family: var(--font-family2);
+  padding-top: 10vh;
+  padding-bottom: 5vh;
+  background-color: black;
+}

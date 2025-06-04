@@ -102,4 +102,16 @@ WHERE article.id = :id;");
         $car = new Car($line['model'], $line['year'], $line['car_image'], $brand, $line['car_id']);
         return new Article($line['author'], $line['text'], $car, $line['article_image'], new \DateTime($line['date']), $line['article_id']);
     }
+
+    public function persist(Article $article): void {
+        $connection = Database::connect();
+        $preparedQuery = $connection->prepare("INSERT INTO article (author, text, car_id, image, date) VALUES (:author, :text, :car_id, :image, :date)");
+        $preparedQuery->execute([
+            ':author' => $article->getAuthor(),
+        ':text' => $article->getText(),
+        ':car_id' => $article->getCar()->getId(),
+        ':image' => $article->getImage(),
+        ':date' => $article->getDate()->format('Y-m-d H:i:s')
+        ]);
+    }
 }

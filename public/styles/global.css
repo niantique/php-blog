@@ -53,8 +53,8 @@ body {
     width: 100%;
     h1 {
       color: rgba(255, 132, 0, 0.5);
-      font-size: 18em;
-      font-family: var(--font-family1);
+      font-size: 11em;
+      font-family: var(--font-family2);
       line-height: 35vh;
     }
     p {
@@ -108,9 +108,17 @@ body {
     }
   }
 
+  h4, a {
+    background-color: black;
+    text-align: center;
+    font-family: var(--font-family2);
+    padding-top: 5vh;
+    font-size: 2em;
+    text-decoration: none;
+  }
   .articlesMain {
     background-color: black;
-    padding-top: 10vh;
+    padding-top: 5vh;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -146,6 +154,11 @@ body {
     }
   }
 
+  .manage {
+    display: flex;
+    background-color: black;
+    justify-content: space-around;
+  }
   footer {
     text-align: center;
     font-family: var(--font-family2);

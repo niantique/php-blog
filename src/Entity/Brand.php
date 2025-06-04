@@ -24,5 +24,13 @@ class Brand {
        public function getName(): string {
         return $this->name;
     }
+
+    public function getOrigin(): string {
+        return $this->origin;
+    }
+
+    public function getDescription(): string {
+        return $this->description;
+    }
 }
 
