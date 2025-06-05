@@ -33,11 +33,11 @@ class CarRepository
         $list = [];
         $connection = Database::connect();
         $preparedQuery = $connection->prepare("
-        SELECT car.*,
-        brand.id AS brand_id,
-        brand.name AS brand_name,
-        brand.origin AS brand_origin,
-        brand.description AS brand_description
+        SELECT DISTINCT car.*,
+                    brand.id AS brand_id,
+                    brand.name AS brand_name,
+                    brand.origin AS brand_origin,
+                    brand.description AS brand_description
         FROM car
         JOIN brand on car.brand_id = brand.id
         WHERE car.model LIKE :modelKeyword

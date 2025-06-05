@@ -15,26 +15,25 @@ class ArticleRepository
 
         $preparedQuery = $connection->prepare("
             SELECT 
-    article.id AS article_id,
-    article.author,
-    article.text,
-    article.image AS article_image,
-    article.date,
+                    article.id AS article_id,
+                    article.author,
+                    article.text,
+                    article.image AS article_image,
+                    article.date,
 
-    car.id AS car_id,
-    car.model,
-    car.year,
-    car.image AS car_image,
-    car.brand_id,
+                    car.id AS car_id,
+                    car.model,
+                    car.year,
+                    car.image AS car_image,
+                    car.brand_id,
 
-    brand.id AS brand_id,
-    brand.name AS brand_name,
-    brand.origin,
-    brand.description
-
-FROM article
-JOIN car ON article.car_id = car.id
-JOIN brand ON car.brand_id = brand.id;
+                    brand.id AS brand_id,
+                    brand.name AS brand_name,
+                    brand.origin,
+                    brand.description
+            FROM article
+            JOIN car ON article.car_id = car.id
+            JOIN brand ON car.brand_id = brand.id;
         ");
         $preparedQuery->execute();
 
@@ -72,28 +71,27 @@ JOIN brand ON car.brand_id = brand.id;
         $connection = Database::connect();
 
         $preparedQuery = $connection->prepare("
-          SELECT 
-    article.id AS article_id,
-    article.author,
-    article.text,
-    article.image AS article_image,
-    article.date,
+          SELECT
+                    article.id AS article_id,
+                    article.author,
+                    article.text,
+                    article.image AS article_image,
+                    article.date,
 
-    car.id AS car_id,
-    car.model,
-    car.year,
-    car.image AS car_image,
-    car.brand_id,
+                    car.id AS car_id,
+                    car.model,
+                    car.year,
+                    car.image AS car_image,
+                    car.brand_id,
 
-    brand.id AS brand_id,
-    brand.name AS brand_name,
-    brand.origin,
-    brand.description
-
-FROM article
-JOIN car ON article.car_id = car.id
-JOIN brand ON car.brand_id = brand.id
-WHERE article.id = :id;");
+                    brand.id AS brand_id,
+                    brand.name AS brand_name,
+                    brand.origin,
+                    brand.description
+            FROM article
+            JOIN car ON article.car_id = car.id
+            JOIN brand ON car.brand_id = brand.id
+            WHERE article.id = :id;");
         $preparedQuery->execute(['id' => $id]);
         $line = $preparedQuery->fetch();
         if (!$line) return null;
@@ -103,21 +101,23 @@ WHERE article.id = :id;");
         return new Article($line['author'], $line['text'], $car, $line['article_image'], new \DateTime($line['date']), $line['article_id']);
     }
 
-    public function persist(Article $article): void {
+    public function persist(Article $article): void
+    {
         $connection = Database::connect();
         $preparedQuery = $connection->prepare("INSERT INTO article (author, text, car_id, image, date) VALUES (:author, :text, :car_id, :image, :date)");
         $preparedQuery->execute([
             ':author' => $article->getAuthor(),
-        ':text' => $article->getText(),
-        ':car_id' => $article->getCar()->getId(),
-        ':image' => $article->getImage(),
-        ':date' => $article->getDate()->format('Y-m-d H:i:s')
+            ':text' => $article->getText(),
+            ':car_id' => $article->getCar()->getId(),
+            ':image' => $article->getImage(),
+            ':date' => $article->getDate()->format('Y-m-d H:i:s')
         ]);
         $lastInsertId = $connection->lastInsertId();
         $article->setId((int)$lastInsertId);
     }
 
-    public function update(Article $article): void {
+    public function update(Article $article): void
+    {
         $connection = Database::connect();
         $preparedQuery = $connection->prepare("
           UPDATE article 
@@ -125,11 +125,30 @@ WHERE article.id = :id;");
         WHERE id = :id
         ");
         $preparedQuery->execute([
-             ':author' => $article->getAuthor(),
-        ':text' => $article->getText(),
-        ':image' => $article->getImage(),
-        ':id' => $article->getId()
+            ':author' => $article->getAuthor(),
+            ':text' => $article->getText(),
+            ':image' => $article->getImage(),
+            ':id' => $article->getId()
         ]);
+    }
 
+    public function searchByLabel(string $keyword): array
+    {
+        $allArticles = $this->getAll();
+        $unique = [];
+
+        foreach ($allArticles as $article) {
+            $car = $article->getCar();
+            $brand = $car->getBrand();
+            $label = $brand->getName() . ' ' . $car->getModel();
+
+            if (stripos($label, $keyword) !== false) {
+                $articleId = $article->getId();
+                if (!isset($unique[$articleId])) {
+                    $unique[$articleId] = $article;
+                }
+            }
+        }
+        return array_values($unique);
     }
 }

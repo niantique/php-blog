@@ -2,11 +2,8 @@
 
 namespace App\View;
 
-use App\Core\BaseView;
 use App\Core\RawView;
 use App\Entity\Article;
-use App\View\Part\HeaderDetailView;
-use App\View\Part\FooterDetailView;
 
 class ArticleDetailView extends RawView {
     private article $article;
@@ -24,7 +21,6 @@ class ArticleDetailView extends RawView {
         echo"<h1>Blaze Leon</h1>";
         echo "<img src='{$imgPath}' alt='{$car->getModel()}'/>";
         echo "<h4>{$car->getYear()} Author {$this->article->getAuthor()}</h4>";
-        // echo "<p>{$this->article->getDate()}</p>";
         echo "<p>{$this->article->getText()}</p>";
         echo "</div>";
         echo"<div>";

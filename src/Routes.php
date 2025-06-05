@@ -7,6 +7,7 @@ use App\Controller\ListArticleController;
 use App\Controller\ShowArticleController;
 use App\Controller\AddArticleController;
 use App\Controller\UpdateArticleController;
+use App\Controller\UpdateListController;
 
 class Routes {
     public static function defineRoutes() {
@@ -15,7 +16,8 @@ class Routes {
             "/search" => new SearchController(),
             "/article/show" => new ShowArticleController(),
             "/add-article" => new AddArticleController(),
-            "/update-article" => new UpdateArticleController()
+            "/update" => new UpdateArticleController(),
+            "/update-list" => new UpdateListController(),
         ];
     }
 }

@@ -3,7 +3,6 @@
 namespace App\View;
 
 use App\Core\BaseView;
-use App\Entity\Article;
 
 class ArticleListView extends BaseView
 {
@@ -32,7 +31,7 @@ class ArticleListView extends BaseView
         echo "</div>";
         echo '<div class="manage">';
         echo"<a href='/add-article'>Write a review</a>";
-        echo "<h4>Manage your review</h4>";
+        echo "<a href='/update-list'>Manage your review</a>";
         echo "</div>";
     }
 }

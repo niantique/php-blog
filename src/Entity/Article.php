@@ -55,5 +55,19 @@ class Article {
     public function setId(int $id): void {
         $this->id = $id;
     }
-}
 
+    public function setAuthor(string $author): self {
+        $this->author = $author;
+        return $this;
+    }
+
+    public function setText(string $text): self {
+        $this->text = $text;
+        return $this;
+    }
+
+    public function setImage(string $image): self {
+        $this->image = $image;
+        return $this;
+    }
+}

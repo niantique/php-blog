@@ -3,7 +3,7 @@
 namespace App\Core;
 
 use App\View\Part\HeaderDetailView;
-use App\View\Part\FooterDetailView;
+use App\View\Part\Footer;
 
 class RawView extends BaseView {
      protected function content() {
@@ -12,7 +12,7 @@ class RawView extends BaseView {
 
     public function render() {
         $header = new HeaderDetailView();
-        $footer = new FooterDetailView();
+        $footer = new Footer();
 
         $header->render();
         $this->content();

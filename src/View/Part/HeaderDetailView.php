@@ -2,9 +2,11 @@
 
 namespace App\View\Part;
 
-class HeaderDetailView {
-    public function render(): void {
-        ?>
+class HeaderDetailView
+{
+    public function render(): void
+    {
+?>
         <!DOCTYPE html>
         <html lang="en">
 
@@ -22,8 +24,9 @@ class HeaderDetailView {
             <link rel="stylesheet" href="/styles/article.css" type="text/css">
             <title>Blaze Leon</title>
         </head>
+
         <body>
 
-        <?php
+<?php
     }
 }

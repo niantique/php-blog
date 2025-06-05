@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Core\BaseController;
-use App\Entity\Article;
 use App\Repository\ArticleRepository;
 use App\View\ErrorView;
 use App\View\FormArticleView;
@@ -12,34 +11,43 @@ use App\View\RedirectView;
 class UpdateArticleController extends BaseController {
     public function doGet(): \App\Core\BaseView {
         $id = $_GET["id"] ?? null;
-        if (!empty($id) && is_numeric($id)) {
-            $repo = new ArticleRepository();
-            $article = $repo->findById($id);
-            if ($article) {
-                return new FormArticleView(article: $article);
+        if (!$id || !is_numeric($id)) {
+                return new ErrorView("Invalid ID");
             }
-        }
-        return new ErrorView("This article does not exist");
+            $repo = new ArticleRepository();
+            $article = $repo->getById((int)$id);
+
+            if (!$article) {
+                return new ErrorView("This article does not existe");
+            }
+        return new FormArticleView($article);
     }
 
     public function doPost(): \App\Core\BaseView {
         $id = $_GET["id"] ?? null;
-        $repo = new ArticleRepository();
-
-        if (!id || !is_numeric($id)) {
+        if (!$id || !is_numeric($id)) {
             return new ErrorView("Invalid article ID");
         }
-        $article = $repo->findById((int)$id);
-        if (!article) {
+        $repo = new ArticleRepository();
+        $article = $repo->getById((int)$id);
+        if (!$article) {
             return new ErrorView("Article not found");
         }
 
-        if(empty($_POST['author']) || empty($_POST['text']) || empty($_POST['image']) || empty($_POST['car'])) {
-            return new FormArticleView(error: "All fields are required", article: $article);
+        if(empty($_POST['author']) ||
+            empty($_POST['text']) ||
+            empty($_POST['image']) ||
+            empty($_POST['car_model']) ||
+            empty($_POST['car_year']) ||
+            empty($_POST['car_brand_name']) ||
+            empty($_POST['car_brand_origin']) ||
+            empty($_POST['car_brand_description'])
+            ) {
+            return new FormArticleView($article, "All fields are required");
         }
 
         $article->setAuthor($_POST["author"]);
-        $article->settext($_POST["text"]);
+        $article->setText($_POST["text"]);
         $article->setImage($_POST["image"]);
 
         $repo->update($article);

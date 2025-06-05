@@ -2,22 +2,26 @@
 
 namespace App\View;
 
-use App\Core\BaseView;
 use App\Core\FormView;
 use App\Entity\Article;
-use App\View\Part\FooterAddView;
-use App\View\Part\HeaderAddView;
 
 class FormArticleView extends FormView
 {
-    public function __construct(private ?Article $article = null) {}
+    private ?Article $article;
+    private ?string $errorMsg;
+    public function __construct(?Article $article = null, ?string $errorMsg = null) {
+        $this->article = $article;
+        $this->errorMsg = $errorMsg;
+    }
 
     protected function content(): void
-    {
+    { if ($this->errorMsg) {
+        echo "<p class='error'>{$this->errorMsg}</p>";
+    }
 ?>      <section>
     <h1>Blaze Leon</h1>
     <div>
-        <?= $this->article ? "Update" : "<h2>Share your thoughts</h2>" ?>
+        <?= $this->article ? "<h2>Update</h2>" : "<h2>Share your thoughts</h2>" ?>
         <form method="post" enctype="multipart/form-data">
             <label>Car Model<br>
             <input type="text" name="car_model" value="<?= htmlspecialchars($this->article?->getCar()?->getModel() ?? "") ?>">
@@ -39,6 +43,9 @@ class FormArticleView extends FormView
             </label><br>
             <label>Text<br>
                 <textarea name="text"><?= htmlspecialchars($this->article?->getText() ?? "") ?></textarea>
+            </label><br>
+            <label>Image<br>
+                <input type="text" name="image" value="<?= htmlspecialchars($this->article?->getImage() ?? "") ?>">
             </label><br>
             <button type="submit"><?= $this->article ? "Update" : "Publish" ?></button>
         </form>
