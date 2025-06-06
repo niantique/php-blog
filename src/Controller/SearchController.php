@@ -18,7 +18,7 @@ class SearchController extends BaseController {
         $results = $repo->searchByLabel($keyword);
         
         if (empty($results)) {
-            return new ErrorView("No result");
+            return new ErrorView("No result found");
         }
         return new HomeView($results);
     }

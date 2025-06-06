@@ -150,19 +150,20 @@ section {
         display: flex;
         justify-content: space-between;
         width: 80%;
+        margin-bottom: 1em;
         .label a{
           text-decoration: none;
-          font-size: 2em;
-          font-family: var(--font-family1);
+          font-size: 1em;
+          font-family: var(--font-family2);
         }
-        .label:hover {
-            
+        .label a:hover, .actions a:hover {
+            color: orange;
         }
         .actions a{
           margin-left: 1em;
           text-decoration: none;
-          font-size: 2em;
-          font-family: var(--font-family1);
+          font-size: 1em;
+          font-family: var(--font-family2);
           align-items: end;
         }
       }

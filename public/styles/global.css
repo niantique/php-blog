@@ -175,4 +175,9 @@ body {
     padding-bottom: 5vh;
     background-color: black;
   }
+
+  .error {
+    background-color: black;
+    text-align: center;
+  }
 }
