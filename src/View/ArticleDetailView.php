@@ -16,6 +16,7 @@ class ArticleDetailView extends RawView {
         $car = $this->article->getCar();
         $brand = $car->getBrand();
         $imgPath = '/' . ltrim($car->getImage(), '/');
+        $likes = $this->article->getLikes();
         echo "<section>";
         echo "<div>";
         echo"<h1>Blaze Leon</h1>";
@@ -29,5 +30,11 @@ class ArticleDetailView extends RawView {
         echo "<img src='{$imgPath}' alt='{$car->getModel()}'/>";
         echo "</div>";
         echo "</section>";
+        echo '<div class="like">';
+        echo "<span class='likeCount'>{$likes}</span>";
+        echo "<form method='post' action='/like?id={$this->article->getId()}' class='likeForm'>";
+        echo "<button type='submit' class='likeButton'>&#10084;</button>";
+        echo "</form>";
+        echo "</div>";
         }
 }

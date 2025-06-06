@@ -3,7 +3,7 @@
 namespace App\Core;
 
 class BaseController {
-    public function processRequest(): void {
+    public function processRequest() {
         if($_SERVER['REQUEST_METHOD'] == "GET") {
             $this->doGet()->render();
         } else {

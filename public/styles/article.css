@@ -91,6 +91,24 @@ body {
       }
     }
   }
+  .like {
+    display: flex;
+    margin-left: 80%;
+    .likeForm {
+      .likeButton {
+        border: none;
+        font-size: 2em;
+        color: var(--color-main);
+      }
+      .likeButton:hover {
+        color: red;
+      }
+    }
+    .likeCount {
+      font-size: 2em;
+      font-family: var(--font-family2);
+    }
+  }
 
   footer {
     text-align: center;

@@ -23,6 +23,7 @@ CREATE TABLE article (
     date DATETIME DEFAULT CURRENT_TIMESTAMP,
     text TEXT,
     image TEXT,
+    likes INT DEFAULT 0,
     car_id INTEGER,
     FOREIGN KEY(car_id) REFERENCES car(id)
 );

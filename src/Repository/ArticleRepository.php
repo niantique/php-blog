@@ -77,6 +77,7 @@ class ArticleRepository
                     article.text,
                     article.image AS article_image,
                     article.date,
+                    article.likes,
 
                     car.id AS car_id,
                     car.model,
@@ -98,7 +99,7 @@ class ArticleRepository
 
         $brand = new Brand($line['brand_name'], $line['origin'], $line['description'], $line['brand_id']);
         $car = new Car($line['model'], $line['year'], $line['car_image'], $brand, $line['car_id']);
-        return new Article($line['author'], $line['text'], $car, $line['article_image'], new \DateTime($line['date']), $line['article_id']);
+        return new Article($line['author'], $line['text'], $car, $line['article_image'], new \DateTime($line['date']), $line['article_id'], (int) $line['likes']);
     }
 
     public function persist(Article $article): void
@@ -159,5 +160,11 @@ class ArticleRepository
         $preparedQuery->execute();
 
         return $preparedQuery->rowCount() > 0;
+    }
+
+    public function incrementLike(int $id): void {
+        $connection = Database::connect();
+        $preparedQuery = $connection->prepare("UPDATE article SET likes = likes + 1 WHERE id =:id");
+        $preparedQuery->execute(['id' => $id]);
     }
 }

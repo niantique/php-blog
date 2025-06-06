@@ -16,6 +16,7 @@ class Routes {
             "/" => new ListArticleController(),
             "/search" => new SearchController(),
             "/article/show" => new ShowArticleController(),
+            "/like" => new ShowArticleController(),
             "/add-article" => new AddArticleController(),
             "/update" => new UpdateArticleController(),
             "/update-list" => new UpdateListController(),

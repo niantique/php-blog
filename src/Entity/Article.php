@@ -11,6 +11,7 @@ class Article {
     private string $text;
     private ?string $image;
     private Car $car;
+    private int $likes = 0;
 
     public function __construct(
         string $author,
@@ -18,7 +19,8 @@ class Article {
         Car $car,
         ?string $image = null,
         ?\DateTime $date = null,
-        ?int $id = null
+        ?int $id = null,
+        int $likes = 0
     ) {
         $this->author = $author;
         $this->text = $text;
@@ -26,6 +28,7 @@ class Article {
         $this->image = $image;
         $this->date = $date ?? new \DateTime();
         $this->id = $id;
+        $this->likes = $likes;
     }
     
     public function getCar(): Car {
@@ -69,5 +72,12 @@ class Article {
     public function setImage(string $image): self {
         $this->image = $image;
         return $this;
+    }
+    public function getLikes(): int {
+        return $this->likes;
+    }
+
+    public function setLikes(int $likes): void {
+        $this->likes = $likes;
     }
 }
