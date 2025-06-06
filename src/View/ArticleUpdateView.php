@@ -16,7 +16,7 @@ class ArticleUpdateView extends UpdateView
     protected function content(): void
     {
         echo '<section class="update">';
-        echo "<h1>Blaze Leon</h1>";
+        echo "<h1><a href='/'>Blaze Leon</a></h1>";
         echo '<div>';
         echo '<h2>My published reviews</h2>';
         echo '<ul>';

@@ -19,7 +19,7 @@ class FormArticleView extends FormView
         echo "<p class='error'>{$this->errorMsg}</p>";
     }
 ?>      <section>
-    <h1>Blaze Leon</h1>
+    <h1><a href="/">Blaze Leon</a></h1>
     <div>
         <?= $this->article ? "<h2>Update</h2>" : "<h2>Share your thoughts</h2>" ?>
         <form method="post" enctype="multipart/form-data">

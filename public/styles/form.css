@@ -54,6 +54,9 @@ section {
     text-align: center;
     opacity: 55%;
   }
+  a {
+    text-decoration: none;
+  }
   div {
     width: 75vw;
     height: 140vh;

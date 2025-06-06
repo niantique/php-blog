@@ -19,7 +19,7 @@ class ArticleDetailView extends RawView {
         $likes = $this->article->getLikes();
         echo "<section>";
         echo "<div>";
-        echo"<h1>Blaze Leon</h1>";
+        echo"<h1><a href='/'>Blaze Leon</a></h1>";
         echo "<img src='{$imgPath}' alt='{$car->getModel()}'/>";
         echo "<h4>{$car->getYear()} Author {$this->article->getAuthor()}</h4>";
         echo "<p>{$this->article->getText()}</p>";

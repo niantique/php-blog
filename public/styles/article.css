@@ -52,7 +52,7 @@ body {
     margin-right: 5vw;
     div {
       width: 35vw;
-      height: 200vh;
+      height: 195vh;
       h1 {
         font-family: var(--font-family2);
         font-size: 4em;
@@ -60,6 +60,9 @@ body {
         padding-bottom: 2vh;
         text-align: center;
         height: 15vh;
+      }
+      a {
+        text-decoration: none;
       }
       h2 {
         height: 15vh;
@@ -93,11 +96,11 @@ body {
   }
   .like {
     display: flex;
-    margin-left: 80%;
+    margin-left: 86%;
     .likeForm {
       .likeButton {
         border: none;
-        font-size: 2em;
+        font-size: 1.8em;
         color: var(--color-main);
       }
       .likeButton:hover {
