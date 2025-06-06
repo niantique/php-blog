@@ -80,6 +80,12 @@ body {
       border: none;
       font-size: 1.2em;
     }
+    button:hover {
+      color: orange;
+    }
+    label:hover {
+      color: orange;
+    }
   }
 
   .carList {
@@ -158,6 +164,9 @@ body {
     display: flex;
     background-color: black;
     justify-content: space-around;
+    a:hover {
+      color: orange;
+    }
   }
   footer {
     text-align: center;

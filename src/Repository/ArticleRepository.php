@@ -151,4 +151,13 @@ class ArticleRepository
         }
         return array_values($unique);
     }
+
+    public function delete(int $id): bool {
+        $connection = Database::connect();
+        $preparedQuery = $connection->prepare("DELETE FROM article WHERE id=:id");
+        $preparedQuery->bindValue(":id", $id);
+        $preparedQuery->execute();
+
+        return $preparedQuery->rowCount() > 0;
+    }
 }

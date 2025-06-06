@@ -110,6 +110,9 @@ section {
         width: 100%;
         padding-top: 5vh;
       }
+      button:hover {
+        color: orange;
+      }
     }
   }
 }
@@ -142,20 +145,25 @@ section {
     }
     ul {
       margin-left: 10vw;
-      li {
-        list-style: none;
-        a {
-          display: flex;
-          justify-content: space-between;
+      list-style: none;
+      .articleLine {
+        display: flex;
+        justify-content: space-between;
+        width: 80%;
+        .label a{
           text-decoration: none;
           font-size: 2em;
           font-family: var(--font-family1);
-          p {
-            margin-right: 10vw;
-          }
-           p:hover {
-          color: white;
         }
+        .label:hover {
+            
+        }
+        .actions a{
+          margin-left: 1em;
+          text-decoration: none;
+          font-size: 2em;
+          font-family: var(--font-family1);
+          align-items: end;
         }
       }
     }

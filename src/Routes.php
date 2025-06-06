@@ -6,6 +6,7 @@ use App\Controller\SearchController;
 use App\Controller\ListArticleController;
 use App\Controller\ShowArticleController;
 use App\Controller\AddArticleController;
+use App\Controller\DeleteController;
 use App\Controller\UpdateArticleController;
 use App\Controller\UpdateListController;
 
@@ -18,6 +19,7 @@ class Routes {
             "/add-article" => new AddArticleController(),
             "/update" => new UpdateArticleController(),
             "/update-list" => new UpdateListController(),
+            "/delete" => new DeleteController(),
         ];
     }
 }
